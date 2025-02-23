@@ -1,0 +1,40 @@
+/* chicaMagicaProfile.module.css */
+
+.profileContainer {
+    width: 90%;
+    margin: 80px auto 50px;
+    padding: 20px;
+    background-color: var(--background-secondary);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    margin-bottom: 30px;
+}
+
+.details p {
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+.history {
+    margin-top: 20px;
+}
+
+.historyTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.historyTable th,
+.historyTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.historyTable th {
+    background-color: var(--primary-color);
+    color: var(--link-color);
+}

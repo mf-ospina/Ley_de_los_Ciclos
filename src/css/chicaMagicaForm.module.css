@@ -1,0 +1,68 @@
+/* chicaMagicaForm.module.css */
+
+/* Contenedor principal */
+.contenedor {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para el formulario */
+.formulario {
+    background-color: var(--background-secondary);
+    width: 500px;
+    padding: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Grupo de campos */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiquetas de los campos */
+.formGroup label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+/* Estilos para los inputs dentro de un grupo de formulario */
+.formGroup input {
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde suave */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+  /* Al enfocar el input */
+.formGroup input:focus {
+    border-color: var(--secondary-color); /* Resalta con el color secundario */
+    box-shadow: 0 0 5px rgba(74, 20, 140, 0.5); /* Sombra sutil */
+    outline: none;
+}
+
+/* Botón del formulario */
+.btnForm {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+    align-self: center;
+}
+
+.btnForm:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}

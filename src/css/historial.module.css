@@ -1,0 +1,42 @@
+/* historial.module.css */
+.contenedor {
+    width: 100%;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+
+.titulo-tabla {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+/* Botones */
+.btn {
+    width: 80px;
+}
+
+.btn-agregar {
+    
+    width: 130px;
+    background-color: #392300;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+    background-color: #555555;
+}
