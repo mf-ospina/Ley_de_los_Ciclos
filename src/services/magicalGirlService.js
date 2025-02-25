@@ -1,12 +1,12 @@
 import api from './api';
 
-export const getMagicalGirls = async (estado = '') => {
-    const response = await api.get('magicalGirlsController', { params: { estado } });
+export const getMagicalGirls = async () => {
+    const response = await api.get('MagicalGirls');
     return response.data;
 };
 
 export const getMagicalGirlById = async (id) => {
-    const response = await api.get(`magicalGirlsController/${id}`);
+    const response = await api.get(`MagicalGirls/${id}`);
     return response.data;
 };
 

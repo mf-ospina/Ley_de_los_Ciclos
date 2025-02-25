@@ -22,13 +22,13 @@ function ChicaMagicaForm() {
             async function fetchData() {
                 try {
                     const data = await getMagicalGirlById(id);
-                    // Asumimos que contract_Date viene en formato ISO y el input type="date" acepta YYYY-MM-DD
+                    // Suponemos que contract_Date viene en formato ISO y el input type="date" acepta YYYY-MM-DD
                     setFormData({
-                        name: data.name || '',
-                        age: data.age || '',
-                        origun_City: data.origun_City || '',
-                        status: data.status || '',
-                        contract_Date: data.contract_Date ? data.contract_Date.split('T')[0] : ''
+                        name: data.Name || '',
+                        age: data.Age || '',
+                        origun_City: data.Origun_City || '',
+                        status: data.Status || '',
+                        contract_Date: data.Contract_Date ? data.Contract_Date.split('T')[0] : ''
                     });
                 } catch (error) {
                     console.error('Error al obtener la chica mágica:', error);
