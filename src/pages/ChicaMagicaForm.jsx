@@ -24,11 +24,11 @@ function ChicaMagicaForm() {
                     const data = await getMagicalGirlById(id);
                     // Suponemos que contract_Date viene en formato ISO y el input type="date" acepta YYYY-MM-DD
                     setFormData({
-                        name: data.Name || '',
-                        age: data.Age || '',
-                        origun_City: data.Origun_City || '',
-                        status: data.Status || '',
-                        contract_Date: data.Contract_Date ? data.Contract_Date.split('T')[0] : ''
+                        name: data.name || '',
+                        age: data.age || '',
+                        origun_City: data.origun_City || '',
+                        status: data.status || '',
+                        contract_Date: data.contract_Date ? data.contract_Date.split('T')[0] : ''
                     });
                 } catch (error) {
                     console.error('Error al obtener la chica mágica:', error);
@@ -38,7 +38,7 @@ function ChicaMagicaForm() {
         }
     }, [id]);
 
-    // Manejar cambios en los inputs
+    // Manejar cambios en los inputs y select
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -103,15 +103,19 @@ function ChicaMagicaForm() {
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="status">Estado</label>
-                    <input
-                        type="text"
+                    <select
                         id="status"
                         name="status"
                         value={formData.status}
                         onChange={handleChange}
                         className="form-control"
                         required
-                    />
+                    >
+                        <option value="">Seleccione una opción</option>
+                        <option value="Activa">Activa – La chica mágica sigue luchando contra las brujas.</option>
+                        <option value="Desaparecida">Desaparecida – Se desconoce su paradero o no hay información reciente sobre ella.</option>
+                        <option value="Rescatada por la Ley de los Ciclos">Rescatada por la Ley de los Ciclos – Ha sido salvada antes de caer en la desesperación y convertirse en bruja.</option>
+                    </select>
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="contract_Date">Fecha de Contrato</label>

@@ -11,7 +11,6 @@ function ChicaMagicaProfile() {
         async function fetchData() {
             try {
                 const data = await getMagicalGirlById(id);
-                // Asegúrate de que el objeto "data" tenga las propiedades con mayúsculas según el JSON
                 setGirl(data);
             } catch (error) {
                 console.error("Error al obtener la chica mágica:", error);
@@ -26,17 +25,17 @@ function ChicaMagicaProfile() {
 
     return (
         <div className={styles.profileContainer}>
-            <h2>Perfil de {girl.Name}</h2>
+            <h2>Perfil de {girl.name}</h2>
             <div className={styles.details}>
-                <p><strong>Edad:</strong> {girl.Age}</p>
-                <p><strong>Ciudad de Origen:</strong> {girl.Origun_City}</p>
-                <p><strong>Estado:</strong> {girl.Status}</p>
+                <p><strong>Edad:</strong> {girl.age}</p>
+                <p><strong>Ciudad de Origen:</strong> {girl.origun_City}</p>
+                <p><strong>Estado:</strong> {girl.status}</p>
                 <p>
                     <strong>Fecha de Contrato:</strong>{" "}
-                    {new Date(girl.Contract_Date).toLocaleDateString()}
+                    {new Date(girl.contract_Date).toLocaleDateString()}
                 </p>
             </div>
-            {girl.HistorialsDb && girl.HistorialsDb.length > 0 && (
+            {girl.historialsDb && girl.historialsDb.length > 0 && (
                 <div className={styles.history}>
                     <h3>Historial de Cambios</h3>
                     <table className={styles.historyTable}>
@@ -49,12 +48,12 @@ function ChicaMagicaProfile() {
                             </tr>
                         </thead>
                         <tbody>
-                            {girl.HistorialsDb.map((entry, index) => (
-                                <tr key={entry.Id}>
+                            {girl.historialsDb.map((entry, index) => (
+                                <tr key={entry.id}>
                                     <td>{index + 1}</td>
-                                    <td>{entry.PreviussState}</td>
-                                    <td>{entry.NewState}</td>
-                                    <td>{new Date(entry.ChangeDade).toLocaleString()}</td>
+                                    <td>{entry.previussState}</td>
+                                    <td>{entry.newState}</td>
+                                    <td>{new Date(entry.changeDade).toLocaleString()}</td>
                                 </tr>
                             ))}
                         </tbody>
