@@ -11,15 +11,14 @@ function Historial() {
         async function fetchHistorial() {
             try {
                 const magicalGirls = await getMagicalGirls();
-                // Aplanar el historial de todas las chicas utilizando las propiedades correctas (según el JSON)
+                // Aplanar el historial de todas las chicas utilizando las propiedades en minúsculas
                 const allHistorial = magicalGirls.reduce((acc, girl) => {
-                    if (girl.HistorialsDb && Array.isArray(girl.HistorialsDb)) {
-                        // Para cada registro, agregamos el nombre de la chica y usamos las propiedades con mayúscula
-                        const registros = girl.HistorialsDb.map(record => ({
-                            girlName: girl.Name,
-                            previussState: record.PreviussState,
-                            newState: record.NewState,
-                            changeDade: record.ChangeDade
+                    if (girl.historialsDb && Array.isArray(girl.historialsDb)) {
+                        const registros = girl.historialsDb.map(record => ({
+                            girlName: girl.name,
+                            previussState: record.previussState,
+                            newState: record.newState,
+                            changeDade: record.changeDade
                         }));
                         return acc.concat(registros);
                     }
@@ -33,16 +32,6 @@ function Historial() {
         fetchHistorial();
     }, []);
 
-    // Filtrar la data del historial según el término de búsqueda.
-    // Se filtra por: nombre de la chica, estado anterior, nuevo estado y fecha (convertida a string).
-    const filteredHistorial = historial.filter(item =>
-        (item.girlName ? item.girlName.toLowerCase() : "").includes(filterText.toLowerCase()) ||
-        (item.previussState ? item.previussState.toLowerCase() : "").includes(filterText.toLowerCase()) ||
-        (item.newState ? item.newState.toLowerCase() : "").includes(filterText.toLowerCase()) ||
-        (item.changeDade ? new Date(item.changeDade).toLocaleString().toLowerCase() : "").includes(filterText.toLowerCase())
-    );
-
-    // Definir las columnas de la tabla
     const columns = [
         {
             name: 'Chica',
@@ -66,7 +55,13 @@ function Historial() {
         }
     ];
 
-    // Memorizar el componente del subHeader (input de búsqueda) para evitar que pierda foco en cada render
+    const filteredHistorial = historial.filter(item =>
+        String(item.girlName).toLowerCase().includes(filterText.toLowerCase()) ||
+        String(item.previussState).toLowerCase().includes(filterText.toLowerCase()) ||
+        String(item.newState).toLowerCase().includes(filterText.toLowerCase()) ||
+        String(new Date(item.changeDade).toLocaleString()).toLowerCase().includes(filterText.toLowerCase())
+    );
+
     const subHeaderComponent = useMemo(() => (
         <input
             type="text"
