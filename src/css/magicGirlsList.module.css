@@ -1,6 +1,6 @@
 /* Contenedor principal */
 .contenedor {
-    width: 100%;
+    width: 100%; 
     padding-top: 150px;
     padding-bottom: 150px;
     display: flex;
@@ -9,7 +9,6 @@
     justify-content: center;
     margin-bottom: 50px;
 }
-
 
 .agregar-cliente {
     width: 95%;
@@ -21,15 +20,57 @@
 
 }
 /* Botones */
+/* Estilos generales para botones */
 .btn {
-    width: 80px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Botón "Ver" */
+.btn-ver {
+    background-color: #53afbd; /* Azul turquesa */
+    color: white;
+}
+
+.btn-ver:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+/* Botón "Editar" */
+.btn-editar {
+    background-color: #4aa1ff; /* Azul */
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-editar:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Botón "Eliminar" */
+.btn-eliminar {
+    background-color: #ff7684; /* Rojo */
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
 }
 
 .btn-agregar {
-    
     width: 130px;
-    background-color: #392300;
-    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--link-color);
+    color: var(--secondary-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;

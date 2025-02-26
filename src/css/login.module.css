@@ -11,11 +11,12 @@
 
 /* Estilos para la sección de login */
 .login-section {
-    background-color: var(--background-secondary);
+    background-color: #43434312;
     width: 500px;
     padding: 80px;
     text-align: center;
     border-radius: 10px;
+    border: solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -37,7 +38,10 @@
     padding: 10px;
     margin: 10px 0;
     border: 1px solid var(--accent-color);
-    border-radius: 5px;
+    border-radius: 10px;
+    background-color: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde semi-transparente */
+    color: white; /* Color del texto */
     font-size: 1rem;
 }
 
@@ -73,4 +77,21 @@
 
 .login-form a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-section {
+        width: 90%; /* Reduce el tamaño en pantallas pequeñas */
+        padding: 30px;
+    }
+
+    .login-form .form-control {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .login-form button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }

@@ -2,13 +2,13 @@
 
 /* Definición de Colores */
 :root {
-    --primary-color: #ffffff; /* Encabezado, pie de página, botones */
-    --secondary-color: #333333; /* Gris oscuro para el logo y títulos */
-    --accent-color: #666666; /* Gris claro para detalles y subtítulos */
-    --background-color: #f0f0f0; /* Fondo principal en gris claro */
-    --background-secondary: #ffffff; /* Fondo para secciones secundarias */
-    --text-color: #333333; /* Texto principal */
-    --link-color: #111111; /* Color de enlaces en el menú */
+    --primary-color: #0E101B; /* Encabezado, pie de página, botones */
+    --secondary-color: #ffffff; /* Gris oscuro para el logo y títulos */
+    --accent-color: #F6A2A8; /* Gris claro para detalles y subtítulos */
+    --background-color: #0E101B; /* Fondo principal en gris claro */
+    --background-secondary: #0E101B; /* Fondo para secciones secundarias */
+    --text-color: #f8f3f3; /* Texto principal */
+    --link-color: #f06a73; /* Color de enlaces en el menú */
 }
 
 /* General */
@@ -19,7 +19,15 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
 }
 
 .menu,
@@ -35,12 +43,12 @@ body {
 /* Header */
 .menu {
     /*fijar encabezado*/
-    position: fixed; /* Mantiene el encabezado fijo */
     top: 0; /* Alinea el encabezado en la parte superior */
     left: 0; /* Alinea el encabezado a la izquierda */
     z-index: 1000; /* Asegura de que esté encima de otros elementos */
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .logo {
@@ -108,6 +116,68 @@ body {
     padding: 10px;
 }
 
+/*navbar responsivo*/
+.menu-toggle {
+    display: none; /* Oculto en pantallas grandes */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--link-color);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: auto; /* Permite que se ajuste al contenido */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1; /* Para que tome el espacio disponible */
+    }
+
+    .leyciclos {
+        font-size: 1.5rem; /* Reducimos el tamaño en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block; /* Aparece en pantallas pequeñas */
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--link-color);
+    }
+
+    .opc-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+    .opc-menu.open {
+        display: flex;
+    }
+
+    .opc-menu ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .opc-menu ul li {
+        padding: 10px 0;
+    }
+}
+
 /* Main Content */
 
 .contenedor {
@@ -115,29 +185,59 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh; 
 }
 
 .cont-principal {
     display: flex;
     width: 100%;
     height: calc(100vh - 200px);
+    flex: 1;
+    background: linear-gradient(180deg, #2A3050 0%, #f06a73 100%);
 }
 
+
 .info-principal {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    width: 50%;
-    padding-left: 5%;
+    width: 100%;
+    padding: 5%;
 }
 
 .img-principal {
-    width: 50%;
+    flex: 1;
+    width: 100%;
     background-image: url('../img/Imagen-Reclutamiento-Ley-de-los-Ciclos.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: flex;
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .cont-principal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .img-principal {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .info-principal {
+        padding-bottom: 10%;
+        display: flex;
+        order: 2;
+    }
+
+    .img-principal {
+        order: 1;
+    }
 }
 
 .btn-vermas {
@@ -152,9 +252,9 @@ body {
 
 /* Sobre Nosotros Section */
 .sobre-nosotros {
-    height: auto;
+    height: 20%;
     width: 97vw;
-    padding: 20px;
+    padding: 5%;
     text-align: center;
     background-color: var(--background-secondary);
 }
@@ -167,19 +267,25 @@ body {
 }
 
 .img-secundaria {
-    width: 50%;
+    flex: 1;
+    width: 100%;
     background-image: url('../img/imagen-principal3.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-position: center;
+    display: flex;
 }
 
 .form-contacto {
+    flex: 1;
     display: flex;
-    width: 50%;
-    padding-top: 100px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5%;
+    background: linear-gradient(150deg, #f06a73 0%, #2A3050 100%);
 }
 
 .form-contacto h2 {
@@ -190,6 +296,10 @@ body {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+    border-radius: 10px;
+    background-color: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde semi-transparente */
+    color: white; /* Color del texto */
 }
 
 .btn-form {
@@ -200,6 +310,32 @@ body {
     border-radius: 30px;
     text-align: center;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cont-secundario {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .img-secundaria {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .form-contacto {
+        padding-bottom: 10%;
+        display: flex;
+        order: 2;
+    }
+
+    .img-secundaria  {
+        order: 1;
+    }
+
+    .pie-pagina {
+        padding-top: 180px;
+    }
 }
 
 /*transiciones de botones y enlaces*/
@@ -235,11 +371,11 @@ body {
 /* Footer */
 footer {
     width: 100%;
-    height: 200px;
-    padding: 20px;
-    text-align: center;
     background-color: var(--primary-color);
     color: var(--link-color);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
 }
 
 footer a {
@@ -247,3 +383,4 @@ footer a {
     text-decoration: none;
     margin: 0 5px;
 }
+

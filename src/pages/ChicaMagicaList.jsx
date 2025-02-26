@@ -41,6 +41,62 @@ function ChicaMagicaList() {
             }
         }
     };
+    
+    const customStyles = {
+        headCells: {
+          style: {
+            backgroundColor: "var(--primary-color)", // Fondo del encabezado
+            color: "var(--secondary-color)", // Color del texto
+            fontSize: "16px",
+            fontWeight: "bold",
+            textAlign: "center"
+          },
+        },
+        rows: {
+          style: {
+            backgroundColor: "#2A3050", // Fondo de las filas
+            color: "var(--secondary-color)",
+            fontSize: "14px",
+            minHeight: "45px",
+          },
+        },
+        subHeader: {
+            style: {
+                backgroundColor: "var(--primary-color)", // Fondo oscuro para el área del filtro
+                padding: "10px",
+            },
+        },
+        cells: {
+          style: {
+            padding: "10px", // Espaciado interno
+            borderBottom: "1px solid #999999", // Borde entre filas
+          },
+        },
+        pagination: {
+            style: {
+              backgroundColor: "var(--primary-color)", // Fondo oscuro para la paginación
+              color: "var(--secondary-color)",
+            },
+            pageButtonsStyle: {
+                backgroundColor: "var(--primary-color)",
+                color: "white",     
+                transition: "background-color 0.3s",
+                "&:hover": {
+                    backgroundColor: "var(--secondary-color)", 
+                },
+                "&:disabled": {
+                    backgroundColor: "#444", // Color gris para botones deshabilitados
+                    color: "var(--secondary-color)",
+                },
+            },
+          },
+          noData: {
+            style: {
+              backgroundColor: "var(--primary-color)",
+              color: "var(--secondary-color)",
+            },
+          },
+      };
 
     // Definición de columnas para la tabla
     const columns = [
@@ -77,8 +133,8 @@ function ChicaMagicaList() {
         {
             name: 'Perfil',
             cell: (row) => (
-                <button className="btn btn-info btn-sm" onClick={() => handleViewProfile(row.id)}>
-                    Ver Perfil
+                <button className={styles["btn"] + " " + styles["btn-ver"]} onClick={() => handleViewProfile(row.Id)}>
+                    Ver
                 </button>
             ),
             ignoreRowClick: true,
@@ -88,23 +144,26 @@ function ChicaMagicaList() {
         {
             name: 'Acciones',
             cell: (row) => (
-                <>
-                    <button className="btn btn-primary btn-sm" onClick={() => handleEdit(row.id)}>
+               <button className={styles["btn"] + " " + styles["btn-editar"]} onClick={() => handleEdit(row.Id)}>
                         Editar
-                    </button>
-                    <button
-                        className="btn btn-danger btn-sm"
-                        onClick={() => handleDelete(row.id)}
-                        style={{ marginLeft: '5px' }}
-                    >
-                        Eliminar
-                    </button>
-                </>
+                </button>
             ),
             ignoreRowClick: true,
             allowOverflow: true,
             button: true,
-        }
+        },
+        {
+            name: '',     
+            cell: (row) => (
+                <button className={styles["btn"] + " " + styles["btn-eliminar"]} onClick={() => handleDelete(row.Id)}>
+                        Eliminar
+                </button>
+
+            ),
+            ignoreRowClick: true,
+            allowOverflow: true,
+            button: true,
+        },
     ];
 
     // Filtrar la data según el término de búsqueda
@@ -135,7 +194,7 @@ function ChicaMagicaList() {
                     className={`btn ${styles['btn-agregar']}`}
                     onClick={() => navigate('/chicas/nueva')}
                 >
-                    Agregar Chica
+                    Agregar chica
                 </button>
             </div>
 
@@ -148,6 +207,7 @@ function ChicaMagicaList() {
                 subHeader
                 subHeaderComponent={<SubHeaderComponent />}
                 noHeader
+                customStyles={customStyles}
             />
         </div>
     );
