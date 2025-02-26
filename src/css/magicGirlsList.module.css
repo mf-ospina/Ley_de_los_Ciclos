@@ -1,4 +1,9 @@
 /* Contenedor principal */
+body {
+    background: var(--primary-color) ;
+    color: var(--text-color);
+}
+
 .contenedor {
     width: 100%; 
     padding-top: 150px;

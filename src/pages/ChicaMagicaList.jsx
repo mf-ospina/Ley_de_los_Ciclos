@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import DataTable from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 import { getMagicalGirls, deleteMagicalGirl } from '../services/magicalGirlService';
@@ -133,7 +133,7 @@ function ChicaMagicaList() {
         {
             name: 'Perfil',
             cell: (row) => (
-                <button className={styles["btn"] + " " + styles["btn-ver"]} onClick={() => handleViewProfile(row.Id)}>
+                <button className={styles["btn"] + " " + styles["btn-ver"]} onClick={() => handleViewProfile(row.id)}>
                     Ver
                 </button>
             ),
@@ -144,7 +144,7 @@ function ChicaMagicaList() {
         {
             name: 'Acciones',
             cell: (row) => (
-               <button className={styles["btn"] + " " + styles["btn-editar"]} onClick={() => handleEdit(row.Id)}>
+               <button className={styles["btn"] + " " + styles["btn-editar"]} onClick={() => handleEdit(row.id)}>
                         Editar
                 </button>
             ),
@@ -155,7 +155,7 @@ function ChicaMagicaList() {
         {
             name: '',     
             cell: (row) => (
-                <button className={styles["btn"] + " " + styles["btn-eliminar"]} onClick={() => handleDelete(row.Id)}>
+                <button className={styles["btn"] + " " + styles["btn-eliminar"]} onClick={() => handleDelete(row.id)}>
                         Eliminar
                 </button>
 
@@ -174,17 +174,15 @@ function ChicaMagicaList() {
     );
 
     // Componente para el subHeader (filtro global)
-    const SubHeaderComponent = () => {
-        return (
-            <input
-                type="text"
-                placeholder="Buscar..."
-                value={filterText}
-                onChange={e => setFilterText(e.target.value)}
-                style={{ marginRight: '10px', padding: '8px', width: '200px' }}
-            />
-        );
-    };
+    const subHeaderComponent = useMemo(() => (
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={filterText}
+          onChange={e => setFilterText(e.target.value)}
+          style={{ marginRight: '10px', padding: '8px', width: '200px' }}
+        />
+    ), [filterText]);
 
     return (
         <div className={styles.contenedor}>
@@ -205,7 +203,7 @@ function ChicaMagicaList() {
                 highlightOnHover
                 responsive
                 subHeader
-                subHeaderComponent={<SubHeaderComponent />}
+                subHeaderComponent={subHeaderComponent}
                 noHeader
                 customStyles={customStyles}
             />

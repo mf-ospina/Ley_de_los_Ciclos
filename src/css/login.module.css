@@ -11,12 +11,11 @@
 
 /* Estilos para la sección de login */
 .login-section {
-    background-color: #43434312;
+    background: linear-gradient(150deg, #693d40 0%, #0E101B 100%);
     width: 500px;
     padding: 80px;
     text-align: center;
     border-radius: 10px;
-    border: solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,3 +94,4 @@
         padding: 10px;
     }
 }
+

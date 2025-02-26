@@ -12,7 +12,7 @@
 
 /* Estilos para el formulario */
 .formulario {
-    background-color: var(--background-secondary);
+    background: linear-gradient(150deg, #1a1e35 0%, #0E101B 100%);
     width: 500px;
     padding: 80px;
     border-radius: 10px;
@@ -20,6 +20,13 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .formulario {
+        width: 90%; /* Reduce el tamaño en pantallas pequeñas */
+        padding: 30px;
+    }
 }
 
 /* Grupo de campos */
@@ -37,9 +44,11 @@
 .formGroup input {
     padding: 10px;
     border: 1px solid #ccc; /* Borde suave */
+    background: var(--primary-color);
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--secondary-color);
 }
 
   /* Al enfocar el input */
@@ -49,17 +58,28 @@
     outline: none;
 }
 
+/* Estilos para el select dentro de .formGroup */
+.formGroup select {
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde sutil */
+    background: var(--primary-color); /* Color de fondo */
+    color: var(--secondary-color); /* Color del texto */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
 /* Botón del formulario */
 .btnForm {
-    padding: 10px 20px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100px;
-    align-self: center;
+    transition: all 0.3s ease;
 }
 
 .btnForm:hover {

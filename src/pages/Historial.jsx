@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import DataTable from 'react-data-table-component';
 import { getMagicalGirls } from '../services/magicalGirlService';
-import styles from '../css/historial.module.css';
+import styles from '../css/historial.module.css'; 
+import { useNavigate } from 'react-router-dom';
 
 function Historial() {
     const [historial, setHistorial] = useState([]);
     const [filterText, setFilterText] = useState("");
+    
 
     useEffect(() => {
         async function fetchHistorial() {
@@ -55,6 +57,62 @@ function Historial() {
         }
     ];
 
+    const customStyles = {
+        headCells: {
+          style: {
+            backgroundColor: "var(--primary-color)", // Fondo del encabezado
+            color: "var(--secondary-color)", // Color del texto
+            fontSize: "16px",
+            fontWeight: "bold",
+            textAlign: "center"
+          },
+        },
+        rows: {
+          style: {
+            backgroundColor: "#2A3050", // Fondo de las filas
+            color: "var(--secondary-color)",
+            fontSize: "14px",
+            minHeight: "45px",
+          },
+        },
+        subHeader: {
+            style: {
+                backgroundColor: "var(--primary-color)", // Fondo oscuro para el área del filtro
+                padding: "10px",
+            },
+        },
+        cells: {
+          style: {
+            padding: "10px", // Espaciado interno
+            borderBottom: "1px solid #999999", // Borde entre filas
+          },
+        },
+        pagination: {
+            style: {
+              backgroundColor: "var(--primary-color)", // Fondo oscuro para la paginación
+              color: "var(--secondary-color)",
+            },
+            pageButtonsStyle: {
+                backgroundColor: "var(--primary-color)",
+                color: "white",     
+                transition: "background-color 0.3s",
+                "&:hover": {
+                    backgroundColor: "var(--secondary-color)", 
+                },
+                "&:disabled": {
+                    backgroundColor: "#444", // Color gris para botones deshabilitados
+                    color: "var(--secondary-color)",
+                },
+            },
+          },
+          noData: {
+            style: {
+              backgroundColor: "var(--primary-color)",
+              color: "var(--secondary-color)",
+            },
+          },
+      };
+
     const filteredHistorial = historial.filter(item =>
         String(item.girlName).toLowerCase().includes(filterText.toLowerCase()) ||
         String(item.previussState).toLowerCase().includes(filterText.toLowerCase()) ||
@@ -86,6 +144,7 @@ function Historial() {
                 subHeader
                 subHeaderComponent={subHeaderComponent}
                 noHeader
+                customStyles={customStyles}
             />
         </div>
     );
